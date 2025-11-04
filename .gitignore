@@ -21,3 +21,10 @@ Thumbs.db
 # Build output
 dist/
 build/
+*.js
+*.js.map
+*.d.ts
+*.d.ts.map
+
+# Keep package.json and config files
+!*.config.js
