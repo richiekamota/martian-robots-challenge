@@ -1,4 +1,4 @@
-import { Position, GridBounds } from './types.js';
+import type { Position, GridBounds } from './types.js';
 
 /**
  * Manages the Mars grid surface and tracks scents left by lost robots

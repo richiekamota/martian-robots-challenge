@@ -1,4 +1,4 @@
-import { Position, Orientation, Command, RobotState } from './types.js';
+import type { Position, Orientation, Command, RobotState } from './types.js';
 import { Grid } from './Grid.js';
 
 /**

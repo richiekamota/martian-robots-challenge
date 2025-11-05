@@ -1,4 +1,4 @@
-import { GridBounds, RobotInput, Orientation, Command } from './types.js';
+import type { GridBounds, RobotInput, Orientation, Command } from './types.js';
 
 /**
  * Parses the input string and returns grid bounds and robot inputs
@@ -14,13 +14,13 @@ export function parseInput(input: string): {
   }
 
   // Parse grid bounds from first line
-  const gridBounds = parseGridBounds(lines[0]);
+  const gridBounds = parseGridBounds(lines[0]!);
 
   // Parse robot instructions (pairs of lines)
   const robots: RobotInput[] = [];
   for (let i = 1; i < lines.length; i += 2) {
     if (i + 1 < lines.length) {
-      const robot = parseRobot(lines[i], lines[i + 1]);
+      const robot = parseRobot(lines[i]!, lines[i + 1]!);
       robots.push(robot);
     }
   }
@@ -38,8 +38,8 @@ function parseGridBounds(line: string): GridBounds {
     throw new Error(`Invalid grid bounds format: ${line}`);
   }
 
-  const maxX = parseInt(parts[0], 10);
-  const maxY = parseInt(parts[1], 10);
+  const maxX = parseInt(parts[0]!, 10);
+  const maxY = parseInt(parts[1]!, 10);
 
   if (isNaN(maxX) || isNaN(maxY)) {
     throw new Error(`Invalid grid bounds: ${line}`);
@@ -63,9 +63,9 @@ function parseRobot(positionLine: string, instructionLine: string): RobotInput {
     throw new Error(`Invalid robot position format: ${positionLine}`);
   }
 
-  const x = parseInt(parts[0], 10);
-  const y = parseInt(parts[1], 10);
-  const orientation = parts[2] as Orientation;
+  const x = parseInt(parts[0]!, 10);
+  const y = parseInt(parts[1]!, 10);
+  const orientation = parts[2]! as Orientation;
 
   if (isNaN(x) || isNaN(y)) {
     throw new Error(`Invalid coordinates: ${positionLine}`);

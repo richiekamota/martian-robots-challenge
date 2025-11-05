@@ -1,7 +1,7 @@
 import { Grid } from './Grid.js';
 import { Robot } from './Robot.js';
 import { parseInput } from './parser.js';
-import { RobotState } from './types.js';
+import type { RobotState } from './types.js';
 
 /**
  * Simulates the Mars robots based on input string
@@ -56,7 +56,7 @@ async function main(): Promise<void> {
   if (args.length > 0) {
     // Read from file
     const fs = await import('fs');
-    const filePath = args[0];
+    const filePath = args[0]!;
     input = fs.readFileSync(filePath, 'utf-8');
   } else {
     // Read from stdin
