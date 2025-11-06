@@ -7,13 +7,13 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
+# Install all dependencies (including devDependencies for tests)
 RUN npm ci
 
-# Copy source code
+# Copy source code and test files
 COPY . .
 
-# Build TypeScript
+# Build TypeScript (compiles both source and test files)
 RUN npm run build
 
 # Set the entrypoint to run the application

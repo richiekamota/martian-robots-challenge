@@ -153,6 +153,51 @@ Expected output:
 - **Flexible Input**: Supports both file and stdin input
 - **Docker Support**: Containerized for easy deployment
 
+## Testing
+
+The project includes comprehensive unit tests using Node.js's built-in test runner.
+
+### Running Tests Locally
+
+```bash
+npm test
+```
+
+This will:
+1. Compile TypeScript (including test files)
+2. Run all test suites
+3. Display detailed results
+
+### Test Coverage
+
+- **82 tests** across 4 test files
+- **Grid.test.ts**: Grid boundary and scent management (10 tests)
+- **Robot.test.ts**: Robot movement and commands (29 tests)
+- **parser.test.ts**: Input parsing and validation (28 tests)
+- **index.test.ts**: Integration tests (15 tests)
+
+See `TEST_SUMMARY.md` for detailed test documentation.
+
+### Running Tests in Docker
+
+Build and run tests in a container:
+
+```bash
+# Build the image
+docker build -t martian-robots .
+
+# Run tests (override entrypoint)
+docker run --entrypoint npm martian-robots test
+```
+
+Or run tests interactively:
+
+```bash
+docker run -it --entrypoint sh martian-robots
+# Inside container:
+npm test
+```
+
 ## Development
 
 ### Available Scripts
@@ -160,6 +205,7 @@ Expected output:
 - `npm run build` - Compile TypeScript to JavaScript
 - `npm start` - Run the compiled application
 - `npm run dev` - Build and run in one command
+- `npm test` - Run all unit tests
 
 ### Project Structure
 
